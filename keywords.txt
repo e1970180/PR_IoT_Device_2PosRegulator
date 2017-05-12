@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+PR_IoT_2PosRegulator	KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+announce		KEYWORD2
+update			KEYWORD2	
+inMsgCallback		KEYWORD2	
+setupHW			KEYWORD2
+setupHW1		KEYWORD2
+setCurrentValue		KEYWORD2
+
+
+######################################
+# Constants (LITERAL1)
+######################################
+
+#BL_CONT       		LITERAL1
+
