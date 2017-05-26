@@ -24,8 +24,9 @@
 	
 	void PR_IoT_2PosRegulator::inMsgCallback() {
 		
-		if (inMsg.payload == "SET")	{			//set targetValue
+		if (inMsg.deviceTopic == "SET")	{			//set targetValue
 			_setValue = inMsg.payload.toFloat();
+					Serial.println(_setValue);
 		}
 
 	}
