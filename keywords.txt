@@ -19,6 +19,7 @@ inMsgCallback		KEYWORD2
 setupHW			KEYWORD2
 setupHW1		KEYWORD2
 setCurrentValue		KEYWORD2
+setTargetValue		KEYWORD2
 
 
 ######################################

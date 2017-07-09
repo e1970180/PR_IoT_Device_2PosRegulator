@@ -12,10 +12,6 @@
 		_relay();	
 	}
 	
-	void PR_IoT_2PosRegulator::announce() {
-		postMsg("2PosRegulator", "HELLO"); 
-	}
-	
 	void	PR_IoT_2PosRegulator::loopHW() {
 		requestCurrentValue();
 		regulator->loop( _setValue, _currentValue );
@@ -26,7 +22,6 @@
 		
 		if (inMsg.deviceTopic == "SET")	{			//set targetValue
 			_setValue = inMsg.payload.toFloat();
-					Serial.println(_setValue);
 		}
 
 	}

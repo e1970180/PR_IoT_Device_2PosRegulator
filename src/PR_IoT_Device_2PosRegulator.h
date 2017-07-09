@@ -11,7 +11,7 @@ class PR_IoT_2PosRegulator : public PR_IoT_DeviceClass {
             PR_IoT_2PosRegulator(String name) : PR_IoT_DeviceClass(name) { }
 			~PR_IoT_2PosRegulator()	{	delete regulator; regulator = NULL; }
             
-            void 	announce();
+            //virtual void 	announce();			//could be overloaded here from base class
             void 	update()		{} 		// do regulation in loopHW()
 			
             void 	inMsgCallback(); 
