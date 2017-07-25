@@ -11,16 +11,19 @@ class PR_IoT_2PosRegulator : public PR_IoT_DeviceClass {
             PR_IoT_2PosRegulator(String name) : PR_IoT_DeviceClass(name) { }
 			~PR_IoT_2PosRegulator()	{	delete regulator; regulator = NULL; }
             
-            //virtual void 	announce();			//could be overloaded here from base class
-            void 	update()		{} 		// do regulation in loopHW()
+            virtual void 	announce();			//overloaded here from base class
+            void 	update();
 			
             void 	inMsgCallback(); 
-			virtual void	loopHW();
+			virtual void	loopHW();		// do regulation in loopHW()
             
 			void 	setupHW( uint8_t pin, bool onValue, float hysteresysL, float hysteresysH, uint16_t freqLimitationMS = 0);    
-			void 	setupHW1( float (*pfunc)() )			{ _pfunc = pfunc; 		}	//we can take a value from some other device
-			void 	setCurrentValue(float v) 				{ _currentValue = v;	} 	//interface to set value 
-			void 	setTargetValue(float v) 				{ _setValue = v;		} 	//interface to set value 
+			void 	setupHW1( float (*pfunc)() )			{ 	_pfunc = pfunc; 		}	//we can take a value from some other device
+			void 	setCurrentValue(float v) 				{	_currentValue = v;	} 	//interface to set value 
+			void 	setTargetValue(float v) 				{	_setValue = v;		} 	//interface to set value 
+			float 	getTargetValue() 						{	return _setValue;		} 	//interface to set value 
+			bool	getOutput()								{	return regulator->getOutput(); }
+			
         protected:
 		
 			bool	_offValue;				// false means DEenergiesed is LOW
@@ -33,7 +36,7 @@ class PR_IoT_2PosRegulator : public PR_IoT_DeviceClass {
 			float	(*_pfunc)(void)	= NULL;
 			void	requestCurrentValue()	{	if ( _pfunc != NULL ) _currentValue = (*_pfunc)(); 		}
 			
-		    void 	_relay() 				{	digitalWrite(_pin, regulator->getOutput() ^ _offValue);	 } 
+		    void 	_setOutput();
     };
 	
 #endif
